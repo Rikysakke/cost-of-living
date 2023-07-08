@@ -25,6 +25,10 @@ tot = df.groupby("country")['sum'].mean()
 totj = tot.to_frame().merge(codes, on=['country'], how='left')
 dfitaly=df.where(df['country']=="Italy")
 rapp = stipj.merge(totj, on='country', how='left')
+bollette = df.groupby("country")['x36'].mean()
+bollettej = bollette.to_frame().merge(codes, on=['country'], how='left')
+istruzione = df.groupby("country")['x43'].mean()
+istruzionej = istruzione.to_frame().merge(codes, on=['country'], how='left')
 
 
 ###### DEFINIAMO LE FUNZIONI PER FILTRARE ALCUNE OPERAZIONI DI RICERCA
@@ -214,3 +218,24 @@ def fil_city(citta, data, col):
 # ))
 
 # fig.show()
+
+########################################################
+
+# filtrastati = (bollettej['country'] == "Italy") | (bollettej['country'] == "Switzerland") | (bollettej['country'] == "France") | (bollettej['country'] == "Turkey") | (bollettej['country'] == "Monaco") | (bollettej['country'] == "Liechtenstein") |(bollettej['country'] == "United States") |  (bollettej['country'] == "United Kingdom") | (bollettej['country'] == "Hungary") | (bollettej['country'] == "Norway") 
+
+# fig = px.pie(bollettej.where(filtrastati), values='x36', names='country')
+# fig.update_traces(textposition='inside', textinfo='label')
+# fig.show()
+
+fig = go.Figure()
+
+countries = ['Italy', 'Switzerland', 'France', 'Turkey', 'Spain', 'Netherlands', 'China', 'United Kingdom', 'Hungary', 'Norway']
+
+for country in countries:
+    fig.add_trace(go.Violin(x=df['country'][df['country'] == country],
+                            y=df['x43'][df['country'] == country].where(df['x43']>0),
+                            name=country,
+                            box_visible=True,
+                            meanline_visible=True))
+
+fig.show()
