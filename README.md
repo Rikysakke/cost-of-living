@@ -1,7 +1,9 @@
 # Analisi del costo della vita nel mondo
 
 Kaggle: https://www.kaggle.com/datasets/mvieira101/global-cost-of-living
-
-Sacchetto Riccardo
-Andrea Spinelli
-Davide Grigolo
+<br>
+<br>
+<br>
+Sacchetto Riccardo<br>
+Andrea Spinelli<br>
+Davide Grigolo<br>
